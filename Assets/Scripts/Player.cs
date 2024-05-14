@@ -6,6 +6,12 @@ public class Player : MonoBehaviour
     private float inputValue;
     public float moveSpeed = 25;
     private Vector2 direction;
+    private Vector2 startPosition;
+
+    private void Start()
+    {
+        startPosition = transform.position;
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,5 +32,11 @@ public class Player : MonoBehaviour
         }
 
         rigidBodyPlayer.AddForce(direction * moveSpeed * Time.deltaTime * 100);
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = startPosition;
+        rigidBodyPlayer.velocity = Vector2.zero;
     }
 }
