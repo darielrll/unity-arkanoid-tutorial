@@ -6,6 +6,8 @@ public class Ball : MonoBehaviour
     public float speed = 300;
     private Vector2 velocity;
     private Vector2 startPosition;
+    public AudioSource audioSource;
+    public AudioClip playerSound, brickSound, wallSound, deadZoneSound;
 
     void Start()
     {
@@ -17,7 +19,24 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DeadZone"))
         {
+            audioSource.clip = deadZoneSound;
+            audioSource.Play();
             FindAnyObjectByType<GameManager>().LoseHealth();
+        }
+        if (collision.gameObject.GetComponent<Player>())
+        {
+            audioSource.clip = playerSound;
+            audioSource.Play();
+        }
+        if (collision.gameObject.GetComponent<Brick>())
+        {
+            audioSource.clip = playerSound;
+            audioSource.Play();
+        }
+        if (collision.transform.CompareTag("Wall"))
+        {
+            audioSource.clip = wallSound;
+            audioSource.Play();
         }
     }
 

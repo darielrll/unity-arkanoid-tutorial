@@ -10,6 +10,8 @@ __Notes__:
  - wip
 
 # Key things learned
- - 
+ - how to add sounds, example, brick and player sound
+  - in this case to know the collision it is asking by the script assigned instead of the tag way
 
-# What to add 
+# What to add
+ - 
